@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body,
+		html,
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			overflow: hidden;
+		}
+
+		.interface {
+			display: flex;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			flex-direction: column;
+			row-gap: 10px;
+		}
+
+		.interface>div {
+			background-color: white;
+			border: 1px solid black;
+			padding: 10px;
+			user-select: none;
+		}
+
+		#selected-cell-info {
+			display: none;
+		}
+
+		#selected-cell-info.active {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div class='interface'>
+		<div>
+			<label for='energy'>energy:</label>
+			<input id='energy' type='number' min='0' max='200' value='0' step='20' />
+			<fieldset style='padding:10px;user-select: none;' id='click-type'>
+				<legend>Click</legend>
+				<input id='Place' type='radio' name='click-type' checked />
+				<label for='Place'>Place</label>
+				<input id='Delete' type='radio' name='click-type' />
+				<label for='Delete'>Delete</label>
+				<input id='Replace' type='radio' name='click-type' />
+				<label for='Replace'>Replace</label>
+				<input id='Info' type='radio' name='click-type' />
+				<label for='Info'>Info</label>
+			</fieldset>
+		</div>
+		<div>
+			<label for='cell-type'>Cell type:</label>
+			<select id='cell-type'>
+				<option value='regular_cell'>Regular Cell</option>
+				<option value='devouring_cell'>Devouring Cell</option>
+				<option value='undevouring_cell'>Undevouring Cell</option>
+				<option value='up_directed_cell'>Up Directed Cell</option>
+				<option value='down_directed_cell'>Down Directed Cell</option>
+			</select>
+		</div>
+		<div id='selected-cell-info'>
+			<div id='selected-cell-type'>type: </div>
+			<div id='selected-cell-x'>x: </div>
+			<div id='selected-cell-y'>y: </div>
+			<div id='selected-cell-energy'>energy: </div>
+		</div>
+	</div>
+
+	<canvas></canvas>
+	<script src='ctx.js'></script>
+	<script src='lib.js'></script>
+	<script src='classes/cell.js'></script>
+	<script src='script.js'></script>
+</body>
+
+</html>
