@@ -101,3 +101,147 @@ function drawHighlight(ox, oy) {
 }
 
 const type = x => (x == null ? `${x}` : x.constructor.name)
+
+function drawDevouringCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		color
+	)
+}
+
+function drawUndevouringCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	ctx.fillStyle = '#fff'
+	ctx.fillRect(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		pixelSize / 2,
+		pixelSize / 2
+	)
+}
+function drawUpDirectCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		x * pixelSize + pixelSize / 2,
+		y * pixelSize + pixelSize / 4,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		x * pixelSize + pixelSize / 2,
+		y * pixelSize + pixelSize / 4,
+		color
+	)
+}
+
+function drawDownDirectCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize / 2,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize / 2,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		color
+	)
+}
+
+function drawRightDirectCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 2,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 2,
+		color
+	)
+}
+function drawLeftDirectCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 2,
+		color
+	)
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 2,
+		color
+	)
+}
+
+function drawTransistor(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	drawLine(
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		'#0f0'
+	)
+
+	drawLine(
+		x * pixelSize + pixelSize - pixelSize / 4,
+		y * pixelSize + pixelSize / 4,
+		x * pixelSize + pixelSize / 4,
+		y * pixelSize + pixelSize - pixelSize / 4,
+		'#0f0'
+	)
+}

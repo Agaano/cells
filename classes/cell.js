@@ -47,6 +47,10 @@ class Cell {
 }
 
 class DevouringCell extends Cell {
+	render() {
+		super.render()
+		drawDevouringCell(this.x, this.y)
+	}
 	step(neightbours) {
 		if (neightbours.length === 0) return 0
 		if (this.energy >= 100) return 0
@@ -62,6 +66,10 @@ class DevouringCell extends Cell {
 
 class UndevouringCell extends Cell {
 	throughput = 12
+	render() {
+		super.render()
+		drawUndevouringCell(this.x, this.y)
+	}
 	step(neightbours) {
 		if (neightbours.length === 0) return 0
 		neightbours.map(neightbour => {
@@ -92,6 +100,10 @@ class DirectedCell extends Cell {
 }
 
 class UpDirectedCell extends DirectedCell {
+	render() {
+		super.render()
+		drawUpDirectCell(this.x, this.y)
+	}
 	step(neightbours) {
 		const from = neightbours.find(neightbour => neightbour.y > this.y)
 		const to = neightbours.find(neightbour => neightbour.y < this.y)
@@ -102,6 +114,10 @@ class UpDirectedCell extends DirectedCell {
 }
 
 class DownDirectedCell extends DirectedCell {
+	render() {
+		super.render()
+		drawDownDirectCell(this.x, this.y)
+	}
 	step(neightbours) {
 		const from = neightbours.find(neightbour => neightbour.y < this.y)
 		const to = neightbours.find(neightbour => neightbour.y > this.y)
@@ -111,6 +127,10 @@ class DownDirectedCell extends DirectedCell {
 	}
 }
 class RightDirectedCell extends DirectedCell {
+	render() {
+		super.render()
+		drawRightDirectCell(this.x, this.y)
+	}
 	step(neightbours) {
 		const from = neightbours.find(neightbour => neightbour.x < this.x)
 		const to = neightbours.find(neightbour => neightbour.x > this.x)
@@ -120,6 +140,10 @@ class RightDirectedCell extends DirectedCell {
 	}
 }
 class LeftDirectedCell extends DirectedCell {
+	render() {
+		super.render()
+		drawLeftDirectCell(this.x, this.y)
+	}
 	step(neightbours) {
 		const from = neightbours.find(neightbour => neightbour.x > this.x)
 		const to = neightbours.find(neightbour => neightbour.x < this.x)

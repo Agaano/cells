@@ -115,17 +115,7 @@ canvas.onclick = e => {
 		},
 	})[cursorType]()
 }
-let cells = [
-	new Cell(15, 15, 100),
-	new DevouringCell(16, 16, 0),
-	new UndevouringCell(16, 17, 0),
-	new UpDirectedCell(20, 20, 0),
-	new UpDirectedCell(20, 22, 0),
-	new RightDirectedCell(21, 19, 0),
-	new DownDirectedCell(22, 20, 0),
-	new DownDirectedCell(22, 22, 0),
-	new LeftDirectedCell(21, 23, 0),
-]
+let cells = []
 
 function getNeighbours(cell, cells) {
 	return [
