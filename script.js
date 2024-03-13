@@ -187,7 +187,7 @@ canvas.onclick = e => {
 		},
 	})[cursorType]()
 }
-let cells = [new Earthing(15, 15)]
+let cells = []
 
 function getNeighbours(cell, cells) {
 	return [
