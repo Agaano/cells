@@ -73,6 +73,78 @@ canvas.onclick = e => {
 						)
 					)
 				},
+				right_directed_cell: () => {
+					cells.push(
+						new RightDirectedCell(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				left_directed_cell: () => {
+					cells.push(
+						new LeftDirectedCell(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				n_type_transistor: () => {
+					cells.push(
+						new NTypeTransistor(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				p_type_transistor: () => {
+					cells.push(
+						new PTypeTransistor(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				transistor_output: () => {
+					cells.push(
+						new TransistorOutput(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				void_cell: () => {
+					cells.push(new VoidCell(clickedX, clickedY))
+				},
+				capacitor: () => {
+					cells.push(
+						new Capacitor(clickedX, clickedY, +placeCellEnergyAmount.value)
+					)
+				},
+				transistor_base: () => {
+					cells.push(
+						new TransistorBase(clickedX, clickedY, +placeCellEnergyAmount.value)
+					)
+				},
+				transistor_collector: () => {
+					cells.push(
+						new TransistorCollector(
+							clickedX,
+							clickedY,
+							+placeCellEnergyAmount.value
+						)
+					)
+				},
+				infinity_cell: () => {
+					cells.push(
+						new InfinityCell(clickedX, clickedY, +placeCellEnergyAmount.value)
+					)
+				},
 			})[placeCellTypeElement.value]()
 		},
 		Delete: () => {
@@ -115,7 +187,7 @@ canvas.onclick = e => {
 		},
 	})[cursorType]()
 }
-let cells = []
+let cells = [new Earthing(15, 15)]
 
 function getNeighbours(cell, cells) {
 	return [

@@ -36,6 +36,14 @@ function drawPixel(x, y, color) {
 	)
 }
 
+function drawCircleOutline(x, y, radius, color) {
+	ctx.strokeStyle = color
+	ctx.beginPath()
+	ctx.arc(x, y, radius, 0, 2 * Math.PI)
+	ctx.stroke()
+	ctx.closePath()
+}
+
 function drawHighlight(ox, oy) {
 	const x = ox + offsetX
 	const y = oy + offsetY
@@ -101,6 +109,18 @@ function drawHighlight(ox, oy) {
 }
 
 const type = x => (x == null ? `${x}` : x.constructor.name)
+
+function drawVoidCell(ox, oy) {
+	const x = ox + offsetX
+	const y = oy + offsetY
+	const color = '#fff'
+	drawCircleOutline(
+		x * pixelSize + pixelSize / 2,
+		y * pixelSize + pixelSize / 2,
+		pixelSize / 4,
+		color
+	)
+}
 
 function drawDevouringCell(ox, oy) {
 	const x = ox + offsetX
@@ -234,7 +254,7 @@ function drawTransistor(ox, oy) {
 		y * pixelSize + pixelSize / 4,
 		x * pixelSize + pixelSize - pixelSize / 4,
 		y * pixelSize + pixelSize - pixelSize / 4,
-		'#0f0'
+		'#fff'
 	)
 
 	drawLine(
@@ -242,6 +262,6 @@ function drawTransistor(ox, oy) {
 		y * pixelSize + pixelSize / 4,
 		x * pixelSize + pixelSize / 4,
 		y * pixelSize + pixelSize - pixelSize / 4,
-		'#0f0'
+		'#fff'
 	)
 }
