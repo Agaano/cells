@@ -213,3 +213,70 @@ console.log(type(cells[0]))
 console.log(type(cells[1]))
 console.log(type(cells[2]))
 start()
+
+function saveBoard() {
+	const cellList = []
+	cells.map(cell =>
+		cellList.push({
+			type: type(cell),
+			x: cell.x,
+			y: cell.y,
+			energy: cell.energy,
+		})
+	)
+	downloadAsFile(
+		JSON.stringify(cellList),
+		`${new Date(Date.now()).getTime()}.json`
+	)
+}
+
+const uploadElement = document.getElementById('upload')
+uploadElement.addEventListener('change', loadBoard)
+
+function loadBoard(e) {
+	const file = e.target.files[0]
+	const fReader = new FileReader()
+	fReader.onload = e => {
+		const newCellsJSON = JSON.parse(e.target.result)
+		cells = []
+		newCellsJSON.map(newCell =>
+			cells.push(
+				{
+					Cell: () => new Cell(newCell.x, newCell.y, newCell.energy),
+					DevouringCell: () =>
+						new DevouringCell(newCell.x, newCell.y, newCell.energy),
+					UndevouringCell: () =>
+						new UndevouringCell(newCell.x, newCell.y, newCell.energy),
+					UpDirectedCell: () =>
+						new UpDirectedCell(newCell.x, newCell.y, newCell.energy),
+					DownDirectedCell: () =>
+						new DownDirectedCell(newCell.x, newCell.y, newCell.energy),
+					RightDirectedCell: () =>
+						new RightDirectedCell(newCell.x, newCell.y, newCell.energy),
+					LeftDirectedCell: () =>
+						new LeftDirectedCell(newCell.x, newCell.y, newCell.energy),
+					NTypeTransistor: () =>
+						new NTypeTransistor(newCell.x, newCell.y, newCell.energy),
+					PTypeTransistor: () =>
+						new PTypeTransistor(newCell.x, newCell.y, newCell.energy),
+					TransistorBase: () =>
+						new TransistorBase(newCell.x, newCell.y, newCell.energy),
+					TransistorCollector: () =>
+						new TransistorCollector(newCell.x, newCell.y, newCell.energy),
+					TransistorOutput: () =>
+						new TransistorOutput(newCell.x, newCell.y, newCell.energy),
+					VoidCell: () => new VoidCell(newCell.x, newCell.y, newCell.energy),
+					InfinityCell: () =>
+						new InfinityCell(newCell.x, newCell.y, newCell.energy),
+					Capacitor: () => new Capacitor(newCell.x, newCell.y, newCell.energy),
+				}[newCell.type]()
+			)
+		)
+	}
+	fReader.readAsText(file)
+	e.target.value = null
+}
+
+function newBoard() {
+	cells = []
+}

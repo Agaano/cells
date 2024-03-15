@@ -18,15 +18,29 @@
 		}
 
 		.interface {
+			left: 10px;
+		}
+
+		.right-menu {
+			right: 10px;
+		}
+
+		.interface,
+		.right-menu {
 			display: flex;
 			position: absolute;
 			top: 10px;
-			left: 10px;
 			flex-direction: column;
 			row-gap: 10px;
 		}
 
-		.interface>div {
+		input[type='file'] {
+			display: none;
+		}
+
+
+		.interface>div,
+		.right-menu {
 			background-color: white;
 			border: 1px solid black;
 			padding: 10px;
@@ -85,6 +99,19 @@
 			<div id='selected-cell-x'>x: </div>
 			<div id='selected-cell-y'>y: </div>
 			<div id='selected-cell-energy'>energy: </div>
+		</div>
+	</div>
+	<div class='right-menu' style='display: flex; flex-direction: column; row-gap: 10px'>
+		<div>
+			<button onclick='saveBoard()'><img src='save.svg' width='30' height='30' /></button>
+		</div>
+		<div>
+			<label style='background-color: rgb(240, 240, 240); border: 1px solid black; height: fit-content; display: block'
+				for='upload'><img src='load.svg' width='30' height='30' /></label>
+			<input id='upload' type='file' />
+		</div>
+		<div>
+			<button onclick='newBoard()'><img src='clear.svg' width='30' height='30' /></button>
 		</div>
 	</div>
 

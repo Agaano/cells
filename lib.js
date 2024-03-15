@@ -246,6 +246,14 @@ function drawLeftDirectCell(ox, oy) {
 	)
 }
 
+function downloadAsFile(data, name) {
+	let a = document.createElement('a')
+	let file = new Blob([data], { type: 'application/json' })
+	a.href = URL.createObjectURL(file)
+	a.download = name
+	a.click()
+}
+
 function drawTransistor(ox, oy) {
 	const x = ox + offsetX
 	const y = oy + offsetY

@@ -120,6 +120,7 @@ class DevouringCell extends Cell {
 		if (neightbours.length === 0) return 0
 		if (this.energy >= 100) return 0
 		neightbours.map(neightbour => {
+			if (neightbour instanceof InfinityCell) return
 			this.energy += neightbour.giveEnergy(this.throughput / neightbours.length)
 		})
 		this.onChangeFunc(this)
@@ -243,8 +244,8 @@ class TransistorBase extends Cell {
 	render() {
 		super.render()
 		drawCircleOutline(
-			this.x * pixelSize + pixelSize / 2,
-			this.y * pixelSize + pixelSize / 2,
+			(this.x + offsetX) * pixelSize + pixelSize / 2,
+			(this.y + offsetY) * pixelSize + pixelSize / 2,
 			pixelSize / 10,
 			'#fff'
 		)
